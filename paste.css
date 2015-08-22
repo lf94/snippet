@@ -1,0 +1,19 @@
+body {
+	font-size: 1em;
+	width: 50em;
+	margin: auto;
+}
+
+body plaintext {
+	word-wrap: break-word;
+	border-left: 1px solid #CCC;
+	padding-left: 1em;
+	margin-left: 1em;
+}
+
+.action {
+}
+
+.top {
+	vertical-align: top;
+}
