@@ -6,6 +6,9 @@
 <body>
 <?php
 	if(isset($_GET['hash'])) {
+		// Reject any URIs.
+		if(strpos($_GET['hash'], "://") != false) { return; }
+
 		$text = htmlspecialchars(file_get_contents($_GET['hash'].".txt"));
 		?>
 
