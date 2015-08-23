@@ -6,7 +6,7 @@
 <body>
 <?php
 	function is_hash($hash) {	
-		if(count(hash("sha256", "a")) != count($hash)) { return false; }
+		if(strlen(hash("sha256", "a")) != strlen($hash)) { return false; }
 		foreach(["://", "/", "."] as $element) {
 			if(strpos($hash, $element) != false) { return false; }
 		}
@@ -18,7 +18,6 @@
 
 		$text = htmlspecialchars(file_get_contents($_GET['hash'].".txt"));
 
-		echo $_GET['hash'].".txt";
 		?>
 
 		<form action="/paste/" method="GET" class="action">
@@ -26,13 +25,13 @@
 		</form>
 
 		<?php
+
 		echo "<pre>{$text}</pre>";
 
 	} else if(isset($_POST['file'])) {
 		$hash = hash("sha256", $_POST['file']);
 		file_put_contents("{$hash}.txt", $_POST['file']);
 		header("Location:/paste/?hash={$hash}");
-
 	} else {
 		?>
 
