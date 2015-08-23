@@ -5,11 +5,20 @@
 </head>
 <body>
 <?php
+	function is_hash($hash) {	
+		if(count(hash("sha256"", "a")) != count($hash) { return false; }
+		foreach(["://", "/", "."] as $element) {
+			if(strpos($hash, $element) != false) { return false; }
+		}
+		return true;
+	}
+
 	if(isset($_GET['hash'])) {
-		// Reject any URIs.
-		if(strpos($_GET['hash'], "://") != false) { return; }
+		if(is_hash($_GET['hash']) == false) { return; }
 
 		$text = htmlspecialchars(file_get_contents($_GET['hash'].".txt"));
+
+		echo $_GET['hash'].".txt";
 		?>
 
 		<form action="/paste/" method="GET" class="action">
