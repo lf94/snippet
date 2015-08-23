@@ -6,7 +6,7 @@
 <body>
 <?php
 	function is_hash($hash) {	
-		if(count(hash("sha256"", "a")) != count($hash) { return false; }
+		if(count(hash("sha256", "a")) != count($hash)) { return false; }
 		foreach(["://", "/", "."] as $element) {
 			if(strpos($hash, $element) != false) { return false; }
 		}
